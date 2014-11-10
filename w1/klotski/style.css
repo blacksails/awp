@@ -23,7 +23,8 @@ body {
   background-color: #6c71c4;
 }
 .player-block {
-  background-image: "joker.jpg";
+  background-image: url("joker.jpg");
+}
 #theBoard {
   background-color: #0A3641;
 }

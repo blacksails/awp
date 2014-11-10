@@ -130,7 +130,7 @@ function Game(initialBoard) {
             if (b.isWinner)
                 blockdiv.className = blockdiv.className + " winner-block";
             if (b.isPlayer)
-                blockdiv.className = blockdiv.className + " orange-block";
+                blockdiv.className = blockdiv.className + " orange-block player-block";
 
             switch (b.width) {
                 case 1:
