@@ -224,10 +224,10 @@ function Game(initialBoard) {
                     break;
             }
 			blockdiv.id = i;
-			if (blockdiv.addEventListener) {  // all browsers except IE before version 9
+			if (blockdiv.addEventListener) {  
 			  blockdiv.addEventListener("click", selectTheBlock, false);
 			} else {
-			  if (blockdiv.attachEvent) {   // IE before version 9
+			  if (blockdiv.attachEvent) {  
 				blockdiv.attachEvent("click", selectTheBlock);
 			  }
 			}
@@ -262,7 +262,7 @@ function startGame() {
     var initBoard = [];
     initBoard.push(new Block(2, 2, 2, 1, false, false, true, "clown"))
 
-    /*initBoard.push(new Block(1, 2, 1, 1, false, false, false, "red"));
+    initBoard.push(new Block(1, 2, 1, 1, false, false, false, "red"));
     initBoard.push(new Block(1, 2, 1, 3, false, false, false, "red"));
     initBoard.push(new Block(1, 2, 4, 1, false, false, false, "red"));
     initBoard.push(new Block(1, 2, 4, 3, false, false, false, "red"));
@@ -270,7 +270,7 @@ function startGame() {
     initBoard.push(new Block(1, 1, 2, 4, false, false, false, "green"));
     initBoard.push(new Block(1, 1, 2, 5, false, false, false, "green"));
     initBoard.push(new Block(1, 1, 3, 4, false, false, false, "green"));
-    initBoard.push(new Block(1, 1, 4, 5, false, false, false, "green"));*/
+    initBoard.push(new Block(1, 1, 4, 5, false, false, false, "green"));
 
     initBoard.push(new Block(1, 7, 0, 0, true, false, false, "purple"));
     initBoard.push(new Block(1, 7, 5, 0, true, false, false, "purple"));
