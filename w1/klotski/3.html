@@ -5,13 +5,6 @@
 <title>Uge 1 - Opgave 3</title>
 <link href="style.css" rel="stylesheet" type="text/css" />
 <link href="layout.css" rel="stylesheet" type="text/css" />
-<style>
-#theBoard {
-	height:400px;
-	width:500px;
-	background-color:#000;
-}
-</style>
 <script>
 
 // Mouse click detection
@@ -143,7 +136,85 @@ function Game(initialBoard){
 	}
 	
 	this.draw = function (){
-		
+          var gameboard = document.getElementByID("#theBoard");
+          while (gameboard.firstChild) {
+            gameboard.removeChild(gameboard.firstChild);
+          }
+          for(var b in this.board) {
+            var blockdiv = document.createElement("DIV");
+            if (!(b.isWall || b.isWinner))
+              blockdiv.className = "block";
+            
+            if (b.color == "green")
+              blockdiv.className = blockdiv.className + " green-block";
+            if (b.color == "yellow")
+              blockdiv.className = blockdiv.className + " yellow-block";
+            if (b.color == "red")
+              blockdiv.className = blockdiv.className + " red-block";
+
+            if (b.isWinner)
+              blockdiv.className = blockdiv.className + " winner-block";
+            if (b.isPlayer)
+              blockdiv.className = blockdiv.className + " orange-block";
+
+            switch (b.width)
+              case 1: 
+              blockdiv.className = blockdiv.className + " onewidth";
+              break;
+              case 2: 
+              blockdiv.className = blockdiv.className + " twowidth";
+              break;
+
+            switch (b.heigth)
+              case 1: 
+              blockdiv.className = blockdiv.className + " oneheight";
+              break;
+              case 2: 
+              blockdiv.className = blockdiv.className + " twoheight";
+              break;
+
+            switch (b.x)
+              case 0:
+              blockdiv.className = blockdiv.className + " col1";
+              break;
+              case 1:
+              blockdiv.className = blockdiv.className + " col2";
+              break;
+              case 2:
+              blockdiv.className = blockdiv.className + " col3";
+              break;
+              case 3:
+              blockdiv.className = blockdiv.className + " col4";
+              break;
+              case 4:
+              blockdiv.className = blockdiv.className + " col5";
+              break;
+              case 5:
+              blockdiv.className = blockdiv.className + " col6";
+              break;
+
+            switch (b.y)
+              case 0:
+              blockdiv.className = blockdiv.className + " row1";
+              break;
+              case 1:
+              blockdiv.className = blockdiv.className + " row2";
+              break;
+              case 2:
+              blockdiv.className = blockdiv.className + " row3";
+              break;
+              case 3:
+              blockdiv.className = blockdiv.className + " row4";
+              break;
+              case 4:
+              blockdiv.className = blockdiv.className + " row5";
+              break;
+              case 5:
+              blockdiv.className = blockdiv.className + " row6";
+              break;
+
+            gameboard.appendChild("blockdiv");
+          }
 	};
 	this.updateBoard = function(block,x,y){
 		for(var i = 0; i<this.board.length; i++){
