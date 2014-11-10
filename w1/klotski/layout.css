@@ -1,15 +1,92 @@
+/* GAMEBOARD */
+#theBoard {
+  position: relative;
+  width: 600px;
+  height: 700px;
+  margin: auto;
+}
+#boardexit {
+  width: 200px;
+  height: 100px;
+}
+
+/* BLOCKS */
 .block {
-  border: 1px;
+  position: absolute;
+  border: 2px;
 }
 .oneheight {
-  height: 48px;
+  height: 96px;
 }
 .twoheight {
-  height: 98px;
+  height: 196px;
 }
 .onewidth {
-  width: 48px;
+  width: 96px;
 }
 .twowidth {
-  width: 98px;
+  width: 196px;
 }
+
+/* WALLS */
+.sidewall {
+  width: 100px;
+  height: 700px;
+}
+.topwall {
+  height: 100px;
+  width: 400px;
+}
+.bottomwall {
+  width: 100px;
+  height: 100px;
+}
+.winnerblock {
+  width: 200px;
+  height: 100px;
+}
+
+/* BLOCK POSITIONS */
+.col1 {
+  left: 0px;
+}
+.col2 {
+  left: 100px;
+}
+.col3 {
+  left: 200px;
+}
+.col4 {
+  left: 300px;
+}
+.col5 {
+  left: 400px;
+}
+.col6 {
+  left: 500px;
+}
+.row1 {
+  top: 0px;
+}
+.row2 {
+  top: 100px;
+}
+.row3 {
+  top: 200px;
+}
+.row4 {
+  top: 300px;
+}
+.row4 {
+  top: 400px;
+}
+.row5 {
+  top: 500px;
+}
+.row6 {
+  top: 600px;
+}
+.row7 {
+  top: 700px;
+}
+
