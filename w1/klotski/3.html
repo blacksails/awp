@@ -18,6 +18,31 @@
 // Keyboardspresses
 // Scoreboards/Winner screen
 
+function startGame () {
+	var initBoard = [];
+	initBoard.push(new Block(2,2,2,1,false,false,true,"clown"))
+
+	initBoard.push(new Block(1,2,1,1,false,false,false,"red"));
+	initBoard.push(new Block(1,2,1,3,false,false,false,"red"));
+	initBoard.push(new Block(1,2,4,1,false,false,false,"red"));
+	initBoard.push(new Block(1,2,4,3,false,false,false,"red"));
+	initBoard.push(new Block(2,1,2,3,false,false,false,"yellow"));
+	initBoard.push(new Block(1,1,2,4,false,false,false,"green"));
+	initBoard.push(new Block(1,1,2,5,false,false,false,"green"));
+	initBoard.push(new Block(1,1,3,4,false,false,false,"green"));
+	initBoard.push(new Block(1,1,4,5,false,false,false,"green"));
+
+	initBoard.push(new Block(1,7,0,0,true,false,false,"purple"));
+	initBoard.push(new Block(1,7,5,0,true,false,false,"purple"));
+	initBoard.push(new Block(4,1,1,0,true,false,false,"purple"));
+	initBoard.push(new Block(1,1,1,6,true,false,false,"purple"));
+	initBoard.push(new Block(1,1,4,6,true,false,false,"purple"));
+
+	initBoard.push(new Block(2,1,2,6,true,true,false,"transparent"));
+
+	var Game = new Game(initBoard);
+}
+
 
 function Block(width, height, x, y, isWall, isWinner, isPlayer, color){
 	this.width = width;
@@ -82,19 +107,19 @@ function Game(initialBoard){
 		var newX = newBlock.x+newBlock.width;
 		var newY = newBlock.y+newBlock.height;
 		if(newX <= block.x && newBlock.x >= block.x+block.width && newY <= block.y && newBlock.y >= block.x+block.height){
-			return true;	
+			return true;
 		}else{
-			return false;	
+			return false;
 		}
 	}
 	
 	this.isTouchingStrict = function (block){
 		var notTouchingAnythingElse = false;
 		for(var i = 0; i<this.board.length; i++){
-			if(this.board[i].isWinner=true && isTouching(this.board[i],block)){
+			if(this.board[i].isWinner==true && this.isTouching(this.board[i],block)){
 				notTouchingAnythingElse = true
 			}
-			if(this.board[i].isWinner=false && isTouching(this.board[i],block)){
+			if(this.board[i].isWinner==false && this.isTouching(this.board[i],block)){
 				notTouchingAnythingElse = false	
 			}
 			
@@ -131,6 +156,8 @@ function Game(initialBoard){
 		}
 	}
 }
+
+startGame();
 </script>
 </head>
 
