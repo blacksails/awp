@@ -148,6 +148,8 @@ function Game(initialBoard) {
                 blockdiv.className = blockdiv.className + " yellow-block";
             if (b.color == "red")
                 blockdiv.className = blockdiv.className + " red-block";
+            if (b.color == "purple)
+                blockdiv.className = blockdiv.className + " purple-block";
 
             if (b.isWinner)
                 blockdiv.className = blockdiv.className + " winner-block";
