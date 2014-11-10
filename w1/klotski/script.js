@@ -1,6 +1,7 @@
 // Mouse click detection
 // Keyboardspresses
 // Scoreboards/Winner screen
+var newGame = null;
 
 function Block(width, height, x, y, isWall, isWinner, isPlayer, color) {
     this.width = width;
@@ -15,6 +16,7 @@ function Block(width, height, x, y, isWall, isWinner, isPlayer, color) {
 
 function Game(initialBoard) {
     this.board = initialBoard
+	this.selected = initialBoard[0];
     this.moves = 0;
     this.record = 0;
     this.moveBlock = function (direction, block) {
@@ -192,6 +194,14 @@ function Game(initialBoard) {
                     break;
             }
 			console.log(blockdiv.className);
+			blockdiv.id = i;
+			if (blockdiv.addEventListener) {  // all browsers except IE before version 9
+			  blockdiv.addEventListener("click", selectTheBlock, false);
+			} else {
+			  if (blockdiv.attachEvent) {   // IE before version 9
+				blockdiv.attachEvent("click", selectTheBlock);
+			  }
+			}
             gameboard.appendChild(blockdiv);
         }
     };
@@ -205,9 +215,18 @@ function Game(initialBoard) {
             }
         }
     }
+	this.findBlockFromId = function (id){
+			for (var i = 0; i < this.board.length; i++) {
+            if (i === id) {
+				return this.board[i];
+			}
+	}
 }
 
 
+function selectTheBlock(){
+	newGame.selected = newGame.findBlockFromId(this.id);
+}
 
 
 function startGame() {
@@ -232,7 +251,26 @@ function startGame() {
 
     initBoard.push(new Block(2, 1, 2, 6, true, true, false, "transparent"));
 
-    var newGame = new Game(initBoard);
+    newGame = new Game(initBoard);
     newGame.draw();
 }
 
+
+document.onkeydown = checkKey;
+
+function checkKey(e) {
+    e = e || window.event;
+
+	if (e.keyCode == '37') {
+		newGame.moveBlock("left",newGame.selected);
+    }
+    if (e.keyCode == '38') {
+        newGame.moveBlock("up",newGame.selected);
+    }
+    if (e.keyCode == '39') {
+        newGame.moveBlock("right",newGame.selected);
+    }
+    else if (e.keyCode == '40') {
+        newGame.moveBlock("down",newGame.selected);
+    }
+}
