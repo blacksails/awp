@@ -8,21 +8,23 @@ document.addEventListener("DOMContentLoaded", function() {
       this.value = value;
     }
 
-    this.add = function(o) {
+    this.add = function(o, n) {
+      var n = n || 1
       var h = o.hashCode();
       if (this.entries[h]) {
-        this.entries[h].value++;
+        this.entries[h].value += n;
       } else {
-        var e = new entry(o, 1);
+        var e = new entry(o, n);
         this.entries[h] = e;
       }
     }
 
-    this.remove = function(o) {
+    this.remove = function(o, n) {
+      var n = n || 1
       var h = o.hashCode();
       if (this.entries[h]) {
-        this.entries[h].value--;
-        if (this.entries[h].value == 0) {
+        this.entries[h].value -= n;
+        if (this.entries[h].value <= 0) {
           delete this.entries[h];
         }
       }
@@ -42,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
       var i = "  "
         var res = "{\n"
         for (var p in this.entries) {
-          if (this.entries.hasOwnProperty(p) && this.entries[p].value != 0) {
+          if (this.entries.hasOwnProperty(p)) {
             res += i + this.entries[p].name + ": " + this.entries[p].value + "\n"
           }
         }
@@ -81,6 +83,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
   var cont = document.getElementById("cont");
   cont.innerHTML = set.contains("cheese") + "\n" + set.contains("lol") + "\n" + set.contains("test");
-  console.log(set.toString());
+
+  set.add("test",5);
+  var add2 = document.getElementById("add2");
+  add2.innerHTML = set.toString();
+
+  set.remove("test", 6);
+  var remove2 = document.getElementById("remove2");
+  remove2.innerHTML = set.toString();
   
 });
