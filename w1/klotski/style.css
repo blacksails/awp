@@ -1,3 +1,26 @@
 body {
   background-color: #022B35;
 }
+.selected-block {
+  border-color: #2aa198 !important;
+}
+.block {
+  border: 1px;
+  border-color: #0A3641;
+}
+.wall {
+  background-color: #6c71c4;
+}
+.green-block {
+  background-color: #859900;
+}
+.yellow-block {
+  background-color: #b58900;
+}
+.red-block {
+  background-color: #dc322f;
+}
+.orange-block {
+  background-color: #cb4b16;
+}
+
