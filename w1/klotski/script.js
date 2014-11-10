@@ -119,7 +119,7 @@ function Game(initialBoard) {
         if (this.isTouchingStrict(block)) {
 			wonned = true;
         }
-		if(wonned){
+		if(wonned && block.isPlayer){
 			this.updateScores();
 		}
         return wonned;
