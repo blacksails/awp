@@ -1,8 +1,8 @@
 /* GAMEBOARD */
 #theBoard {
   position: relative;
-  width: 600px;
-  height: 700px;
+  width: 596px;
+  height: 696px;
   margin: auto;
 }
 #boardexit {
@@ -30,20 +30,20 @@
 
 /* WALLS */
 .sidewall {
-  width: 100px;
-  height: 700px;
+  width: 96px !important;
+  height: 696px !important;
 }
 .topwall {
-  height: 100px;
-  width: 400px;
+  height: 96px !important;
+  width: 396px !important;
 }
 .bottomwall {
-  width: 100px;
-  height: 100px;
+  width: 96px !important;
+  height: 96px !important;
 }
 .winnerblock {
-  width: 200px;
-  height: 100px;
+  width: 196px !important;
+  height: 96px !important;
 }
 
 /* BLOCK POSITIONS */

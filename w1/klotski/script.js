@@ -116,8 +116,7 @@ function Game(initialBoard) {
 			var b = this.board[i];
 	
             var blockdiv = document.createElement("DIV");
-            if (!(b.isWall || b.isWinner))
-                blockdiv.className = "block";
+            blockdiv.className = "block";
 
             if (b.color == "green"){
                 blockdiv.className = blockdiv.className + " green-block";
@@ -130,9 +129,11 @@ function Game(initialBoard) {
                 blockdiv.className = blockdiv.className + " purple-block";
 
             if (b.isWinner)
-                blockdiv.className = blockdiv.className + " winner-block";
+                blockdiv.className = blockdiv.className + " winnerblock";
             if (b.isPlayer)
                 blockdiv.className = blockdiv.className + " orange-block player-block";
+            if (b.isWall && b.width == 1 && b.height == 1)
+                blockdiv.className = blockdiv.className + " bottomwall";
 
             switch (b.width) {
                 case 1:
@@ -141,6 +142,8 @@ function Game(initialBoard) {
                 case 2:
                     blockdiv.className = blockdiv.className + " twowidth";
                     break;
+                case 4:
+                    blockdiv.className = blockdiv.className + " topwall";
             }
 
             switch (b.height) {
@@ -149,6 +152,10 @@ function Game(initialBoard) {
                     break;
                 case 2:
                     blockdiv.className = blockdiv.className + " twoheight";
+                    break;
+                case 7:
+                    blockdiv.className = blockdiv.className + " sidewall";
+                    break;
             }
 
 
@@ -191,6 +198,9 @@ function Game(initialBoard) {
                     break;
                 case 5:
                     blockdiv.className = blockdiv.className + " row6";
+                    break;
+                case 6:
+                    blockdiv.className = blockdiv.className + " row7";
                     break;
             }
 			console.log(blockdiv.className);
