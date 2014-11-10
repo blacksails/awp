@@ -2,33 +2,6 @@
 // Keyboardspresses
 // Scoreboards/Winner screen
 
-function startGame() {
-    var initBoard = [];
-    initBoard.push(new Block(2, 2, 2, 1, false, false, true, "clown"))
-
-    initBoard.push(new Block(1, 2, 1, 1, false, false, false, "red"));
-    initBoard.push(new Block(1, 2, 1, 3, false, false, false, "red"));
-    initBoard.push(new Block(1, 2, 4, 1, false, false, false, "red"));
-    initBoard.push(new Block(1, 2, 4, 3, false, false, false, "red"));
-    initBoard.push(new Block(2, 1, 2, 3, false, false, false, "yellow"));
-    initBoard.push(new Block(1, 1, 2, 4, false, false, false, "green"));
-    initBoard.push(new Block(1, 1, 2, 5, false, false, false, "green"));
-    initBoard.push(new Block(1, 1, 3, 4, false, false, false, "green"));
-    initBoard.push(new Block(1, 1, 4, 5, false, false, false, "green"));
-
-    initBoard.push(new Block(1, 7, 0, 0, true, false, false, "purple"));
-    initBoard.push(new Block(1, 7, 5, 0, true, false, false, "purple"));
-    initBoard.push(new Block(4, 1, 1, 0, true, false, false, "purple"));
-    initBoard.push(new Block(1, 1, 1, 6, true, false, false, "purple"));
-    initBoard.push(new Block(1, 1, 4, 6, true, false, false, "purple"));
-
-    initBoard.push(new Block(2, 1, 2, 6, true, true, false, "transparent"));
-
-    var Game = new Game(initBoard);
-    Game.draw();
-}
-
-
 function Block(width, height, x, y, isWall, isWinner, isPlayer, color) {
     this.width = width;
     this.height = height;
@@ -137,13 +110,16 @@ function Game(initialBoard) {
         while (gameboard.firstChild) {
             gameboard.removeChild(gameboard.firstChild);
         }
-        for (var b in this.board) {
+        for (var i = 0; i<this.board.length; i++) {
+			var b = this.board[i];
+	
             var blockdiv = document.createElement("DIV");
             if (!(b.isWall || b.isWinner))
                 blockdiv.className = "block";
 
-            if (b.color == "green")
+            if (b.color == "green"){
                 blockdiv.className = blockdiv.className + " green-block";
+			}
             if (b.color == "yellow")
                 blockdiv.className = blockdiv.className + " yellow-block";
             if (b.color == "red")
@@ -165,7 +141,7 @@ function Game(initialBoard) {
                     break;
             }
 
-            switch (b.heigth) {
+            switch (b.height) {
                 case 1:
                     blockdiv.className = blockdiv.className + " oneheight";
                     break;
@@ -215,7 +191,7 @@ function Game(initialBoard) {
                     blockdiv.className = blockdiv.className + " row6";
                     break;
             }
-
+			console.log(blockdiv.className);
             gameboard.appendChild(blockdiv);
         }
     };
@@ -231,4 +207,32 @@ function Game(initialBoard) {
     }
 }
 
-startGame();
+
+
+
+function startGame() {
+    var initBoard = [];
+    initBoard.push(new Block(2, 2, 2, 1, false, false, true, "clown"))
+
+    initBoard.push(new Block(1, 2, 1, 1, false, false, false, "red"));
+    initBoard.push(new Block(1, 2, 1, 3, false, false, false, "red"));
+    initBoard.push(new Block(1, 2, 4, 1, false, false, false, "red"));
+    initBoard.push(new Block(1, 2, 4, 3, false, false, false, "red"));
+    initBoard.push(new Block(2, 1, 2, 3, false, false, false, "yellow"));
+    initBoard.push(new Block(1, 1, 2, 4, false, false, false, "green"));
+    initBoard.push(new Block(1, 1, 2, 5, false, false, false, "green"));
+    initBoard.push(new Block(1, 1, 3, 4, false, false, false, "green"));
+    initBoard.push(new Block(1, 1, 4, 5, false, false, false, "green"));
+
+    initBoard.push(new Block(1, 7, 0, 0, true, false, false, "purple"));
+    initBoard.push(new Block(1, 7, 5, 0, true, false, false, "purple"));
+    initBoard.push(new Block(4, 1, 1, 0, true, false, false, "purple"));
+    initBoard.push(new Block(1, 1, 1, 6, true, false, false, "purple"));
+    initBoard.push(new Block(1, 1, 4, 6, true, false, false, "purple"));
+
+    initBoard.push(new Block(2, 1, 2, 6, true, true, false, "transparent"));
+
+    var newGame = new Game(initBoard);
+    newGame.draw();
+}
+
