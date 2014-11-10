@@ -13,24 +13,64 @@
 }
 </style>
 <script>
-function Block(width, height,x,y,isWall){
+function Block(width, height, x, y, isWall, isWinner, color){
 	this.width = width;
 	this.height = height;
 	this.x = x;
 	this.y = y;
 	this.isWall = isWall
+	this.isWinner = isWinner
+	this.color = color
 }
 
-function Game(){
+function Game(initialBoard){
+	this.board = initialBoard
 	this.moveBlock = function (direction,block){
+		var granted = this.CollisionCheck(direction,block);
+		if(direction == "right"){
+			if(checkCollision((block.x+1), block.y)){
+				updateBoard (block, (block.x+1), block.y)
+			}
+		}
+		if(granted & direction == "left"){
+			if(checkCollision((block.x-1), block.y)){
+				updateBoard (block, (block.x-1), block.y)
+			}
+		}
+		if(granted & direction == "down"){
+			if(checkCollision(block.x, (block.y+1))){
+				updateBoard (block, block.x, (block.y+1))
+			}
+		}
+		if(granted & direction == "up"){
+			if(checkCollision(block.x, (block.y-1))){
+			updateBoard (block, block.x, (block.y-1))
+			}
+		}
+		this.draw();
+	};
+	this.checkCollision = function (direction,x,y){
+		var granted = false;
 		
+		for(var i = 0; i<this.board.length; i++){
+			var currentBlock = this.board[i];
+			
+		}
+		return granted;
 	};
 	this.draw = function (){
 		
 	};
-	this.checkCollision(){
-		
-	};
+	this.updateBoard = function(block,x,y){
+		for(var i = 0; i<this.board.length; i++){
+			if(this.board[i] === block){
+				block.x = x;
+				block.y = y;
+				board[i] = block
+				
+			}
+		}
+	}
 }
 </script>
 </head>
