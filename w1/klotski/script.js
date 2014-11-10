@@ -1,7 +1,4 @@
-// Mouse click detection
-// Keyboardspresses
-// Scoreboards/Winner screen
-var newGame = null;
+var newGame;
 
 function Block(width, height, x, y, isWall, isWinner, isPlayer, color) {
     this.width = width;
@@ -18,25 +15,26 @@ function Game(initialBoard) {
     this.board = initialBoard
 	this.selected = initialBoard[0];
     this.moves = 0;
+	document.getElementById('moves').innerHTML = 'Moves: 0';
     this.record = 0;
     this.moveBlock = function (direction, block) {
         if (direction == "right") {
-            if (this.checkCollision((block.x + 1), block.y)) {
+            if (this.checkCollision(block, (block.x + 1), block.y)) {
                 this.updateBoard(block, (block.x + 1), block.y)
             }
         }
         if (direction == "left") {
-            if (this.checkCollision((block.x - 1), block.y)) {
+            if (this.checkCollision(block, (block.x - 1), block.y)) {
                 this.updateBoard(block, (block.x - 1), block.y)
             }
         }
         if (direction == "down") {
-            if (this.checkCollision(block.x, (block.y + 1))) {
+            if (this.checkCollision(block, block.x, (block.y + 1))) {
                 this.updateBoard(block, block.x, (block.y + 1))
             }
         }
         if (direction == "up") {
-            if (this.checkCollision(block.x, (block.y - 1))) {
+            if (this.checkCollision(block, block.x, (block.y - 1))) {
                 this.updateBoard(block, block.x, (block.y - 1))
             }
         }
@@ -46,62 +44,84 @@ function Game(initialBoard) {
     this.checkCollision = function (block, x, y) {
         var granted = true;
         var newBlock = new Block(block.width, block.height, x, y, block.isWall, block.isWinner, block.isPlayer, block.color);
+		this.isWinning(newBlock);
         for (var i = 0; i < this.board.length; i++) {
             var currentBlock = this.board[i];
-            if (this.isTouching(newBlock, currentBlock)) {
-                granted = false;
-            }
+			if(currentBlock === block){
+				
+			}else{			
+				
+				if (this.isTouching(newBlock, currentBlock)) {
+					granted = false;
+				}
+			}
+			
         }
-        if (block.isPlayer = true) {
-            if (this.isWinning(block)) {
-                this.updateScores();
-            }
-        }
+        
         if (granted) {
             this.moves++;
         }
+
         return granted;
+		
     };
 
-    this.isTouching = function (newBlock, block) {
-        var newX = newBlock.x + newBlock.width;
-        var newY = newBlock.y + newBlock.height;
-        if (newX <= block.x && newBlock.x >= block.x + block.width && newY <= block.y && newBlock.y >= block.x + block.height) {
-            return true;
-        } else {
-            return false;
-        }
+    this.isTouching = function (newBlock, block) { 		
+		var granted = true;
+		if(block.x + block.width <= newBlock.x){
+
+			granted = false;	
+		}
+		if(block.y + block.height <= newBlock.y){
+			granted = false;
+		}
+		if(block.x >= newBlock.x + newBlock.width){
+			granted = false;
+		}
+		if(block.y >= newBlock.y + newBlock.height){
+			granted = false;	
+		}	
+		return granted;		
     }
 
     this.isTouchingStrict = function (block) {
-        var notTouchingAnythingElse = false;
+        var goal = false;
+		var count = 0;
         for (var i = 0; i < this.board.length; i++) {
-            if (this.board[i].isWinner == true && this.isTouching(this.board[i], block)) {
-                notTouchingAnythingElse = true
-            }
-            if (this.board[i].isWinner == false && this.isTouching(this.board[i], block)) {
-                notTouchingAnythingElse = false
-            }
-
+           	if (this.board[i].isWinner && this.isTouching(block,this.board[i])) {
+				goal = true;	
+			}
         }
+		if(goal) {
+			for (var i = 0; i < this.board.length; i++){	
+				if(this.board[i].isWinner == false && this.isTouching(this.board[i], block)){
+					goal = false
+					count++;
+				}
+			}
+			
+		} 
+		if(count == 1){
+			goal = true;	
+		}
+		return goal;
     }
 
     this.updateScores = function () {
-        var record = document.getElementById("moves");
-        record.innerHtml = "Record: " + moves;
-        startGame();
+        var record = document.getElementById("record");
+        record.innerHTML = "Record: " + this.moves;
         alert("Congratulations, you are the klotski champion of the internet");
+		startGame();
     }
 
     this.isWinning = function (block) {
         var wonned = false;
-        for (var i = 0; i < this.board.length; i++) {
-            if (this.board[i].isWinning) {
-                if (this.isTouchingStrict(this.board[i], block)) {
-                    wonned = true;
-                }
-            }
+        if (this.isTouchingStrict(block)) {
+			wonned = true;
         }
+		if(wonned){
+			this.updateScores();
+		}
         return wonned;
     }
 
@@ -203,7 +223,6 @@ function Game(initialBoard) {
                     blockdiv.className = blockdiv.className + " row7";
                     break;
             }
-			console.log(blockdiv.className);
 			blockdiv.id = i;
 			if (blockdiv.addEventListener) {  // all browsers except IE before version 9
 			  blockdiv.addEventListener("click", selectTheBlock, false);
@@ -226,16 +245,16 @@ function Game(initialBoard) {
         }
     }
 	this.findBlockFromId = function (id){
-			for (var i = 0; i < this.board.length; i++) {
-            if (i === id) {
-				return this.board[i];
-			}
+		return this.board[id];
 	}
 }
 
 
 function selectTheBlock(){
-	newGame.selected = newGame.findBlockFromId(this.id);
+	var blocke = newGame.findBlockFromId(this.id);
+	if(blocke.isWall == false){
+		newGame.selected = blocke;
+	}
 }
 
 
@@ -243,7 +262,7 @@ function startGame() {
     var initBoard = [];
     initBoard.push(new Block(2, 2, 2, 1, false, false, true, "clown"))
 
-    initBoard.push(new Block(1, 2, 1, 1, false, false, false, "red"));
+    /*initBoard.push(new Block(1, 2, 1, 1, false, false, false, "red"));
     initBoard.push(new Block(1, 2, 1, 3, false, false, false, "red"));
     initBoard.push(new Block(1, 2, 4, 1, false, false, false, "red"));
     initBoard.push(new Block(1, 2, 4, 3, false, false, false, "red"));
@@ -251,7 +270,7 @@ function startGame() {
     initBoard.push(new Block(1, 1, 2, 4, false, false, false, "green"));
     initBoard.push(new Block(1, 1, 2, 5, false, false, false, "green"));
     initBoard.push(new Block(1, 1, 3, 4, false, false, false, "green"));
-    initBoard.push(new Block(1, 1, 4, 5, false, false, false, "green"));
+    initBoard.push(new Block(1, 1, 4, 5, false, false, false, "green"));*/
 
     initBoard.push(new Block(1, 7, 0, 0, true, false, false, "purple"));
     initBoard.push(new Block(1, 7, 5, 0, true, false, false, "purple"));
