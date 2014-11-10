@@ -5,7 +5,6 @@ body {
   border-color: #2aa198 !important;
 }
 .block {
-  border: 1px;
   border-color: #0A3641;
 }
 .wall {
@@ -20,22 +19,11 @@ body {
 .red-block {
   background-color: #dc322f;
 }
-.orange-block {
-  background-color: #cb4b16;
+.purple-block {
+  background-color: #6c71c4;
 }
+.player-block {
+  background-image: "joker.jpg";
 #theBoard {
   background-color: #0A3641;
-}
-
-.oneheight {
-  height: 50px;
-}
-.twoheight {
-  height: 100px;
-}
-.onewidth {
-  width: 50px;
-}
-.twowidth {
-  width: 100px;
 }
