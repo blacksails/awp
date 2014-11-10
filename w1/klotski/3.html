@@ -18,33 +18,35 @@ function Block(width, height, x, y, isWall, isWinner, isPlayer, color){
 	this.height = height;
 	this.x = x;
 	this.y = y;
-	this.isWall = isWall
-	this.isWinner = isWinner
+	this.isWall = isWall;
+	this.isWinner = isWinner;
 	this.isPlayer = isPlayer;
-	this.color = color
+	this.color = color;
 }
 
 function Game(initialBoard){
 	this.board = initialBoard
+	this.moves = 0;
+	this.record = 0;
 	this.moveBlock = function (direction,block){
 		if(direction == "right"){
-			if(checkCollision((block.x+1), block.y)){
-				updateBoard (block, (block.x+1), block.y)
+			if(this.checkCollision((block.x+1), block.y)){
+				this.updateBoard (block, (block.x+1), block.y)
 			}
 		}
 		if(direction == "left"){
-			if(checkCollision((block.x-1), block.y)){
-				updateBoard (block, (block.x-1), block.y)
+			if(this.checkCollision((block.x-1), block.y)){
+				this.updateBoard (block, (block.x-1), block.y)
 			}
 		}
 		if(direction == "down"){
-			if(checkCollision(block.x, (block.y+1))){
-				updateBoard (block, block.x, (block.y+1))
+			if(this.checkCollision(block.x, (block.y+1))){
+				this.updateBoard (block, block.x, (block.y+1))
 			}
 		}
 		if(direction == "up"){
-			if(checkCollision(block.x, (block.y-1))){
-			updateBoard (block, block.x, (block.y-1))
+			if(this.checkCollision(block.x, (block.y-1))){
+				this.updateBoard (block, block.x, (block.y-1))
 			}
 		}
 		this.draw();
@@ -64,7 +66,7 @@ function Game(initialBoard){
 	this.isTouching = function (newBlock, block){
 		var newX = newBlock.x+newBlock.width;
 		var newY = newBlock.y+newBlock.height;
-		if(newX <= block.x && newblock.x >= block.x+block.width && newY <= block.y && newBlock.y >= block.x+block.height){
+		if(newX <= block.x && newBlock.x >= block.x+block.width && newY <= block.y && newBlock.y >= block.x+block.height){
 			return true;	
 		}else{
 			return false;	
