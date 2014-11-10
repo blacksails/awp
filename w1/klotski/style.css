@@ -23,4 +23,19 @@ body {
 .orange-block {
   background-color: #cb4b16;
 }
+#theBoard {
+  background-color: #0A3641;
+}
 
+.oneheight {
+  height: 50px;
+}
+.twoheight {
+  height: 100px;
+}
+.onewidth {
+  width: 50px;
+}
+.twowidth {
+  width: 100px;
+}
