@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Multiset</title>
+  <script src="multiset.js" type="text/javascript"></script>
+</head>
+<body>
+<h1>Multiset</h1>
+<p>In the following examples we will be working with the following variable:</p>
+<pre>var set = new multiset();</pre>
+
+<h2>Adding entries</h2>
+<pre>set.add("lol");
+set.add("lol");
+set.add("test");
+set.toString();</pre>
+<b>Output:</b>
+<pre id="add1"></pre>
+
+<h2>Removing entries</h2>
+<pre>set.remove("lol");
+set.remove("test");
+set.toString();</pre>
+<b>Output:</b>
+<pre id="remove1"></pre>
+
+<h2>Counting entries</h2>
+<pre>set.add("cheese");
+set.add("cheese");
+set.count("cheese");
+set.count("lol");</pre>
+<b>Output:</b>
+<pre id="count"></pre>
+
+<h2>Checking if an element is contained</h2>
+<pre>set.contains("cheese");
+set.contains("lol");
+set.contains("test");</pre>
+<b>Output:</b>
+<pre id="cont"></pre>
+
+</body>
+</html>
