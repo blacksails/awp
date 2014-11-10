@@ -13,6 +13,12 @@
 }
 </style>
 <script>
+
+// Mouse click detection
+// Keyboardspresses
+// Scoreboards/Winner screen
+
+
 function Block(width, height, x, y, isWall, isWinner, isPlayer, color){
 	this.width = width;
 	this.height = height;
@@ -49,6 +55,7 @@ function Game(initialBoard){
 				this.updateBoard (block, block.x, (block.y-1))
 			}
 		}
+	
 		this.draw();
 	};
 	this.checkCollision = function (block,x,y){
@@ -56,9 +63,17 @@ function Game(initialBoard){
 		var newBlock = new Block(block.width, block.height, x, y, block.isWall, block.isWinner, block.isPlayer, block.color);
 		for(var i = 0; i<this.board.length; i++){
 			var currentBlock = this.board[i];
-			if(isTouching(newBlock,currentBlock)){
+			if(this.isTouching(newBlock,currentBlock)){
 				granted = false;	
 			}
+		}
+		if(block.isPlayer = true){
+			if(this.isWinning(block)){
+				this.updateScores();	
+			}
+		}
+		if(granted){
+			this.moves++;	
 		}
 		return granted;
 	};
@@ -73,6 +88,35 @@ function Game(initialBoard){
 		}
 	}
 	
+	this.isTouchingStrict = function (block){
+		var notTouchingAnythingElse = false;
+		for(var i = 0; i<this.board.length; i++){
+			if(this.board[i].isWinner=true && isTouching(this.board[i],block)){
+				notTouchingAnythingElse = true
+			}
+			if(this.board[i].isWinner=false && isTouching(this.board[i],block)){
+				notTouchingAnythingElse = false	
+			}
+			
+		}
+	}
+	
+	this.updateScores = function() {
+		// TODO
+	}
+	
+	this.isWinning = function(block){
+		var wonned = false;
+		for(var i = 0; i<this.board.length; i++){
+			if(this.board[i].isWinning){
+				if(this.isTouchingStrict(this.board[i],block)){
+					wonned = true;	
+				}
+			}
+		}
+		return wonned;
+	}
+	
 	this.draw = function (){
 		
 	};
@@ -81,7 +125,7 @@ function Game(initialBoard){
 			if(this.board[i] === block){
 				block.x = x;
 				block.y = y;
-				board[i] = block
+				this.board[i] = block
 				
 			}
 		}
