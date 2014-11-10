@@ -133,7 +133,7 @@ function Game(initialBoard) {
     this.draw = function () {
         var moves = document.getElementById("moves");
         moves.innerHTML = "Moves: " + this.moves;
-        var gameboard = document.getElementByID("#theBoard");
+        var gameboard = document.getElementById("theBoard");
         while (gameboard.firstChild) {
             gameboard.removeChild(gameboard.firstChild);
         }
