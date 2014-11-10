@@ -120,7 +120,10 @@ function Game(initialBoard){
 	}
 	
 	this.updateScores = function() {
-		// TODO
+		var record = document.getElementById("moves");
+		record.innerHtml = "Record: " + moves;
+		startGame();
+		alert("Congratulations, you are the klotski champion of the internet");
 	}
 	
 	this.isWinning = function(block){
@@ -136,7 +139,9 @@ function Game(initialBoard){
 	}
 	
 	this.draw = function (){
-          var gameboard = document.getElementById("#theBoard");
+		  var moves = document.getElementById("moves");
+		  moves.innerHTML = "Moves: " + this.moves;
+          var gameboard = document.getElementByID("#theBoard");
           while (gameboard.firstChild) {
             gameboard.removeChild(gameboard.firstChild);
           }
