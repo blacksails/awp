@@ -1,0 +1,6 @@
+.textarea {
+  width: 700px;
+  height: 300px;
+  border: 1px solid #000;
+  font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
+}
