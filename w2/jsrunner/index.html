@@ -10,7 +10,6 @@
 
         function addListener(element, event, eventIE, handler) {
           if (element.addEventListener) {
-            console.log("addedlistener: "+event);
             element.addEventListener(event, handler, false);
           } else if (element.attachEvent) {
             element.attachEvent(eventIE, handler);
@@ -26,7 +25,7 @@
             var code = jscode.value;
             var res = eval(code);
             result.value = res;
-          }, false);
+          });
         });
 
       })();
