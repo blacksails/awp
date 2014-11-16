@@ -5,8 +5,29 @@
     <meta name="viewport" content="width=device-width">
     <title>JavaScript Runner</title>
     <link rel="stylesheet" href="style.css" type="text/css" />
-    <script type="text/javascript" charset="utf-8">
+    <script type="text/javascript">
       (function() {
+
+        function addListener(element, event, eventIE, handler) {
+          if (element.addEventListener) {
+            console.log("addedlistener: "+event);
+            element.addEventListener(event, handler, false);
+          } else if (element.attachEvent) {
+            element.attachEvent(eventIE, handler);
+          }
+        }
+
+        addListener(document, "DOMContentLoaded", "onreadystatechange", function () {
+          var jsrunner = document.forms["jsrunner"];
+          var jscode = jsrunner.elements["jscode"];
+          var result = jsrunner.elements["result"];
+          var runbutton = jsrunner.elements["run"];
+          addListener(runbutton, "click", "onclick", function () {
+            var code = jscode.value;
+            var res = eval(code);
+            result.value = res;
+          }, false);
+        });
 
       })();
     </script>
@@ -14,12 +35,12 @@
   <body>
     <h1>JavaScript Runner</h1>
     <p>Enter some javascript in the text box and hit run!</p>
-    <form action="" method="post">
+    <form name="jsrunner">
       <h3>Input</h3>
-      <textarea name="jscode" class="textarea" id="jscode"></textarea><br />
-      <button type="submit">Run</button><br />
+      <textarea name="jscode" class="textarea" id="jscode" autofocus></textarea><br />
+      <button type="button" name="run">Run</button><br />
       <h3>Result</h3>
-      <textarea name="result" class="textarea" id="result"></textarea>
+      <textarea name="result" class="textarea" id="result" readonly></textarea>
     </form>
   </body>
 </html>
