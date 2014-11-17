@@ -1,0 +1,42 @@
+@charset "utf-8";
+body {
+	background-color: #022B35;
+}
+#theBoard {
+	background-color: #0A3641;
+	width:600px;
+	height:300px;
+	padding:25px;
+	border: 2px solid #0A3641;
+	border-radius: 25px;
+	margin-left:auto;
+	margin-right:auto;
+}
+.numberBox {
+	width:50px;
+	height:50px;
+	background-color:#036;
+	border: 2px solid #036;
+	border-radius: 8px;
+	text-align:center;
+	color:#F90;
+	cursor:pointer;
+	user-select: none;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:7px;
+	
+	
+	/* UNSELECTABLE */
+	-webkit-user-select: none; /* Chrome/Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+ */
+	-o-user-select: none;
+	user-select: none;
+}
+.numberContainer {
+	width:70px;
+	height:70px;
+	float: left;
+}/* CSS Document */
+

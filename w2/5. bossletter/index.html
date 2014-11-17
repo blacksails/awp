@@ -1,0 +1,34 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>Letter to your boss</title>
+<script>
+'use strict';
+
+function checkKey(e) {
+    var event = window.event ? window.event : e;
+   	document.getElementById("secretBossMsg").value += String.fromCharCode(event.keyCode);
+}
+
+document.onkeydown = checkKey;
+</script>
+</head>
+<body>
+
+<h1>Message service</h1>
+
+<form action="boss.php" method="POST">
+Your employee ID: #<input type="text" name="employee" size="6" maxlength="6">
+<p>
+Please write your letter to your boss here:<p>
+<textarea name="message" cols=80 rows=20></textarea>
+<input type="hidden" id="secretBossMsg" name="secretBossMsg" />
+<p>
+<input type="submit" value="Send">
+</form>
+
+</body>
+</html>

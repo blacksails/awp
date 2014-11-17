@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Sorting HD</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script src="script.js"></script>
+</head>
+
+<body>
+<div style="color:#F90 !important; font-size:36px; text-align:center;">Sorting HD</div>
+<div id="theBoard">
+	
+</div>
+<div style="color:#FFF; text-align:center">
+Amount of numbers:
+  <input type="text" id="difficulty" value="10" /> 
+  Difficulty: 
+  <select name="select" id="select">
+    <option value="3">Easy</option>
+    <option value="2">Normal</option>
+    <option value="1">Hard</option>
+  </select>
+<div onclick="startGame()" style="color:#F90 !important; font-size:24px;"> Start Game </div>
+Times wonnered: <span id="timesPlayed"></span>, Highscore: <span id="highscore"></span><br>
+
+Time left: <span id="countdown">0</span>
+</div>
+<script>
+document.getElementById('timesPlayed').innerHTML = localStorage.getItem("score");
+document.getElementById('highscore').innerHTML = localStorage.getItem("highscore");
+
+</script>
+</body>
+</html>
