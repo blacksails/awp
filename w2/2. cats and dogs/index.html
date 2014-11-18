@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Pets, Cats and Dogs</title>
+<script>
+
+
+Pet = {
+	name : "", 
+	setName : function(n){
+		this.name = n;	
+	},
+	getName : function(n){ 
+		return this.name;
+	} 
+}
+
+function Dog(n){
+	this.setName(n);
+}
+Dog.prototype = Pet;
+Dog.prototype.parent = Pet;
+Dog.prototype.Sound = function(){
+	return "Wuf" 	
+}
+Dog.prototype.ToString = function(){
+	return "Hi i'm a dog, my pet name is " + getName() + " and i say " + this.Sound();	
+}
+
+function Cat(n){
+	this.setName(n);
+}
+Cat.prototype = Pet;
+Cat.prototype.parent = Pet;
+Cat.prototype.Sound = function(){
+	return "Meow";	
+}
+Cat.prototype.ToString = function(){
+	return "Hi i'm a cat, my pet name is " + this.getName() + " and i say " + this.Sound();	
+}
+var cat = new Cat("Mie");
+var dog = new Dog("Søren");
+console.log(cat.ToString());
+console.log(dog.ToString());
+
+
+"use strict";
+</script>
+</head>
+
+<body>
+6. As we made our name property assigned to this.name instead of var.name it is not accesible outside the constructor.<br />
+
+7. With ES5 We could just use freeze() on the object, which would ensure that every propeterty of the object is read-only.
+</body>
+</html>
