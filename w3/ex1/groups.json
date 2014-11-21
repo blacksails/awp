@@ -1,0 +1,57 @@
+[
+    {
+        "name": "Algorithms and Data Structures",
+        "members": ["large", "gerth", "larsen"],
+        "admin": "thj1611"
+    },
+    {
+        "name": "Bioinformatics",
+        "members": ["cstorm", "mailund"],
+        "admin": "elno"
+    },
+    {
+        "name": "Computer Mediated Activity",
+        "members": ["olavb", "bodker"],
+        "admin": "dammand"
+    },
+    {
+        "name": "Cryptography and Security",
+        "members": ["ivan", "jbn", "orlandi"],
+        "admin": "katnie"
+    },
+    {
+        "name": "Data-Intensive Systems",
+        "members": ["ira"],
+        "admin": "tfi"
+    },
+    {
+        "name": "Mathematical Computer Science",
+        "members": ["bromille", "arnsfelt", "gudmund", "tdh"],
+        "admin": "katnie"
+    },
+    {
+        "name": "Programming Languages",
+        "members": ["amoeller", "mis", "danvy"],
+        "admin": "aem"
+    },
+    {
+        "name": "Logic and Semantics",
+        "members": ["birke", "askarov"],
+        "admin": "aem"
+    },
+    {
+        "name": "Ubiquitous Computing and Interaction",
+        "members": ["kgronbak", "mgraves", "bouvin"],
+        "admin": "dammand"
+    },
+    {
+        "name": "Use, Design and Innovation",
+        "members": ["mkyng"],
+        "admin": "katnie"
+    },
+    {
+        "name": "(no group)",
+        "members": ["baerbak", "ocaprani", "kjensen", "olm", "poulsen"],
+        "admin": "ivhah"
+    }
+]
