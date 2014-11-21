@@ -13,7 +13,6 @@ $(function() {
   }
 
   function showMembers() {
-    console.log("test");
     var selectedGroup = $groups.children("option").filter(":selected").text();
     if (selectedGroup == "Select a research group") {
       $members.hide();
