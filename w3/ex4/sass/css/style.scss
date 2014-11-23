@@ -1,0 +1,53 @@
+$font-stack: Helvetica, sans-serif;
+$background: #000;
+$oddcolor: #eee;
+$buttoncolor: #02A4FA;
+
+body {
+  font-family: $font-stack;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+form {
+  background: $background;
+  padding: 3px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  input {
+    border: 0;
+    padding: 10px;
+  }
+  #m {
+    width: 80%;
+  }
+  #nick {
+    width: 10%;
+  }
+  button {
+    width: 9%;
+    background: $buttoncolor;
+    border: none;
+    padding: 10px;
+    margin-left: 0.25%;
+    color: #fff;
+  }
+}
+
+#messages {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  li {
+    padding: 5px 10px;
+  }
+  li:nth-child(odd) {
+    background: $oddcolor;
+  }
+}
+

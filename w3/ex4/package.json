@@ -1,0 +1,12 @@
+{
+  "name": "simplechat",
+  "version": "0.0.1",
+  "description": "A simple chat application",
+  "dependencies": {
+    "express": "^4.10.2",
+    "moment": "^2.8.4",
+    "node-sass": "^1.2.3",
+    "node-sass-middleware": "^0.4.0",
+    "socket.io": "^1.2.1"
+  }
+}
